@@ -20,8 +20,7 @@ Route::get('/',function (){
     return 'Home';
 });
 
-Route::get('/dashboard',function (){
+Route::get('/redirect/{service}','SocialController@redirect');
 
-   return 'dashboard';
+Route::get('/callback/{service}','SocialController@callback');
 
-});
