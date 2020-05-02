@@ -58,8 +58,8 @@ class CrudController extends Controller
     }
     protected function getMessages() {
         return $messages=[
-            'name.required' => 'le nom est est obligatoire',
-            'name.unique' => 'le nom est doit etre unique',
+            'name.required' => __('messages.offer name required'),
+            'name.unique' => __('messages.offer name must unique'),
             'price.required' => 'le prix est est obligatoire',
             'price.numeric' => 'le prix est doit etre numerique',
             'details.required' => 'les details sont  obligatoires',
@@ -73,6 +73,7 @@ class CrudController extends Controller
             'price' =>'required|numeric',
             'details'=>'required'
         ];
+
     }
 
 }
