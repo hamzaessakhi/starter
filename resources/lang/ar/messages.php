@@ -12,6 +12,7 @@ return [
     |
     */
 
+
     "hello gus" => 'اهلا بكم ',
     "welcom" => 'اهلا  ',
     "offer name required" => 'أسم العرض مطلوب',
@@ -24,5 +25,11 @@ return [
     "Offer details en" => 'تفاصيل العرض بالانجليزي',
     "Save Offer"  => 'حفظ',
     "Offer Name" => 'اسم العرض',
-    "Offer details" => 'تفاصيل العرض'
+    "operation" => 'العمليات',
+    "update" => 'تحديث',
+    "Offer details" => 'تفاصيل العرض',
+    "Update your offer"  => "تعديل العرض ",
+    "delete"  => 'حذف',
+    "offer not exist"  => 'العرض غير موجود',
+    "offer deleted successfully" => 'تم حذف العرض بنجاح',
 ];
