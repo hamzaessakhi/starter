@@ -94,7 +94,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-          Add offer
+           {{__('messages.Add your offer')}}
         </div>
             @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
@@ -105,27 +105,27 @@
         <form method="POST"  action="{{route('offers.store')}}">
             @csrf
             <div class="form-group">
-                <label for="name">Offer Name</label>
-                <input type="text" class="form-control"  name="name" placeholder="Offer name">
+                <label for="name"> {{__('messages.Offer name')}}</label>
+                <input type="text" class="form-control"  name="name" placeholder="{{__('messages.Offer name')}}">
                  @error('name')
                 <small class="form-text text-danger">{{$message}}</small>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="price">Offer Price</label>
-                <input type="text" class="form-control" name="price"  placeholder="Price">
+                <label for="price">{{__('messages.Offer price')}}</label>
+                <input type="text" class="form-control" name="price"  placeholder="{{__('messages.Offer price')}}">
                 @error('price')
                 <small class="form-text text-danger">{{$message}}</small>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="details">Offer Details</label>
-                <input type="text" class="form-control" name="details" placeholder="details">
+                <label for="details">{{__('messages.Offer details')}}</label>
+                <input type="text" class="form-control" name="details" placeholder="{{__('messages.Offer details')}}">
                 @error('details')
                 <small class="form-text text-danger">{{$message}}</small>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Save Offer</button>
+            <button type="submit" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
             </form>
 
 

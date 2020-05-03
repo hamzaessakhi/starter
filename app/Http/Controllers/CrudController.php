@@ -2,10 +2,11 @@
 
 
 namespace App\Http\Controllers;
+use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use LaravelLocalization;
 
 class CrudController extends Controller
 {
@@ -18,45 +19,45 @@ class CrudController extends Controller
         return Offer::select('id','name')->get();
 
     }
-   /* public function store(){
-        Offer::create([
-            'name'=>'Offer3',
-            'price'=>'5000',
-            'details'=>'Offer details '
-
-        ]);
-
-    }*/
+    public function getAllOffers()
+    {
+        $offers = Offer::select('id',
+            'price',
+            'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
+            'details_'.LaravelLocalization::getCurrentLocale() . ' as details'
+        )->get(); // return collection
+        return view('offers.all', compact('offers'));
+    }
 
     public function create() {
         return view('offers.create');
     }
 
-    public function store(Request $request){
+    public function store(OfferRequest $request){
 
         //Validate data before insert to database
+        // $messages=$this->getMessages();
+        //$rules=$this->getRules();
+        //$validator = Validator::make($request->all(),$rules,$messages);
 
-
-
-        $messages=$this->getMessages();
-        $rules=$this->getRules();
-        $validator = Validator::make($request->all(),$rules,$messages);
-
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
-        }
+        //if($validator->fails()){
+          //  return redirect()->back()->withErrors($validator)->withInput($request->all());
+        //}
 
         //insert
         Offer::create([
-            'name'=>$request->name,
-            'price'=>$request->price,
-            'details'=>$request->details
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
+            'price' => $request->price,
+            'details_ar' => $request->details_ar,
+            'details_en' => $request->details_en,
+
         ]);
 
-        return redirect()->back()->with(['success'=>'le champs est ajouté avec succés']);
+        return redirect()->back()->with(['success' => 'تم اضافه العرض بنجاح ']);
 
     }
-    protected function getMessages() {
+   /* protected function getMessages() {
         return $messages=[
             'name.required' => __('messages.offer name required'),
             'name.unique' => __('messages.offer name must unique'),
@@ -74,6 +75,6 @@ class CrudController extends Controller
             'details'=>'required'
         ];
 
-    }
+    }*/
 
 }
