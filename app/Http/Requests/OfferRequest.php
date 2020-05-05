@@ -40,12 +40,11 @@ class OfferRequest extends FormRequest
             'name_ar.required' => __('messages.offer name required'),
             'name_en.required' => __('messages.offer name required'),
             'name_ar.unique' => 'اسم العرض موجود ',
-             'name_en.unique' =>'Offer name exist',
+            'name_en.unique' =>'Offer name exist',
             'price.numeric' => 'سعر العرض يجب ان يكون ارقام',
             'price.required' => 'السعر مطلوب',
             'details_ar.required' => 'ألتفاصيل مطلوبة ',
             'details_en.required' => 'ألتفاصيل مطلوبة ',
-
         ];
 
     }

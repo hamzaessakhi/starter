@@ -29,7 +29,7 @@ class CrudController extends Controller{
       $file_name=  $this->saveImage($request->photo,'images/offers');
 
 
-        //insert
+        //insert to database
         Offer::create([
             'photo'=> $file_name,
             'name_ar' => $request->name_ar,
