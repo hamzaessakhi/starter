@@ -16,6 +16,9 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
+Route::get('/Dashboard',function (){
+    return 'Not Adult';
+})->name('not.adult');
 Route::get('/',function (){
     return 'Home';
 });
@@ -56,4 +59,21 @@ Route::group(['prefix'=>'ajax-offers'],function(){
 });
 
 ########  End Ajax routes   ###############
+
+
+######### Begin Authentication && guard ############
+
+Route::group(['middleware'=>'CheckAge','namespace'=>'Auth'],function(){
+
+Route::get('adults','CustomAuthController@adult')->name('adult');
+
+});
+
+Route::get('site','Auth\CustomAuthController@site')->middleware('auth:web')->name('site');
+Route::get('admin','Auth\CustomAuthController@admin')->middleware('auth:admin')->name('admin');
+
+Route::get('admin/login','Auth\CustomAuthController@adminLogin')->name('admin.login');
+Route::post('admin/login','Auth\CustomAuthController@checkAdminLogin')->name('save.admin.login');
+ // video 72 minute 19:21
+########## End Authentication and guard #########"
 
