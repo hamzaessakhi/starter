@@ -75,5 +75,83 @@ Route::get('admin','Auth\CustomAuthController@admin')->middleware('auth:admin')-
 Route::get('admin/login','Auth\CustomAuthController@adminLogin')->name('admin.login');
 Route::post('admin/login','Auth\CustomAuthController@checkAdminLogin')->name('save.admin.login');
  // video 72 minute 19:21
-########## End Authentication and guard #########"
+########## End Authentication and guard ################
+
+
+
+#################### Begin relations routes #############
+ /*
+  *  start one to one
+  */
+
+Route::get('has-one','Relation\RelationsController@hasOneRelation');
+Route::get('has-one-reverse','Relation\RelationsController@hasOneRelationReverse');
+Route::get('get-user-has-phone','Relation\RelationsController@getUserHasPhone');
+Route::get('get-user-not-has-phone','Relation\RelationsController@getUserNotHasPhone');
+Route::get('get-user-has-phone-with-condition','Relation\RelationsController@getUserWhereHasPhoneWithCondition');
+
+ /*
+ * end one to one
+ */
+
+ /*
+  * start one to many
+  */
+
+Route::get('hospital-has-many','Relation\RelationsController@gethospitalDoctors');
+
+Route::get('hospitals','Relation\RelationsController@hospitals')->name('hospital.all');
+
+Route::get('hospitals/{hospital_id}','Relation\RelationsController@deleteHospital')->name('hospital.delete');
+
+
+Route::get('doctors/{hospital_id}','Relation\RelationsController@doctors')->name('hospital.doctors');
+
+Route::get('hospitals_has_doctors','Relation\RelationsController@hospitalsHasDoctor');
+
+Route::get('hospitals_has_doctors_male','Relation\RelationsController@hospitalHasonlyMaleDoctors');
+
+Route::get('hospitals_not_has_not_doctors','Relation\RelationsController@hospitalhasNotdoctors');
+
+
+
+
+/*
+ * end one to many
+ */
+
+/*
+ * start many to many
+  */
+
+Route::get('doctors-services','Relation\RelationsController@getDoctorServices');
+
+Route::get('services-doctors','Relation\RelationsController@getServicesdoctors');
+
+Route::get('doctors/services/{doctor_id}','Relation\RelationsController@getDoctorsServiceByID')->name('doctors.services');
+
+Route::post('saveServices-to-doctor','Relation\RelationsController@saveServicesToDoctors')->name('save.doctors.services');
+
+
+/*
+ *end many to namy
+ */
+
+/*
+ * has one through
+ */
+Route::get('has-one-through','Relation\RelationsController@getPatientDoctors');
+
+Route::get('has-many-through','Relation\RelationsController@getCountryDoctors');
+
+
+/*
+ * has one through
+ *
+ */
+
+
+
+
+#################### End relations routes #############
 
